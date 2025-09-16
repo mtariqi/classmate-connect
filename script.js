@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Notification bell click
     const notificationBell = document.querySelector('.notification-bell');
     notificationBell.addEventListener('click', function() {
-        alert('You have 3 unread notifications:\n- Maria commented on your post\n- New assignment posted\n- Math Problem Set #4 was graded');
+        alert('You have 3 unread notifications:\n- New message in Bioinformatics discussion\n- New assignment posted\n- Sequence Alignment was graded');
     });
     
     // Send message functionality
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const messagesContainer = document.querySelector('.messages-container');
             messagesContainer.innerHTML = `
                 <div class="message received">
-                    <p>Hey there! I'm available to help with coursework.</p>
+                    <p>Hey there! I'm available to help with bioinformatics coursework.</p>
                     <div class="message-time">Just now</div>
                 </div>
             `;
@@ -80,6 +80,22 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             alert('Please write something before posting.');
         }
+    });
+    
+    // Classmate search functionality
+    const searchInput = document.querySelector('.chat-search input');
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const contacts = document.querySelectorAll('.chat-contact');
+        
+        contacts.forEach(contact => {
+            const name = contact.querySelector('h3').textContent.toLowerCase();
+            if (name.includes(searchTerm)) {
+                contact.style.display = 'flex';
+            } else {
+                contact.style.display = 'none';
+            }
+        });
     });
     
     // Simulate live notifications update
