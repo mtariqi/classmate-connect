@@ -404,6 +404,82 @@ footer {
     border-top: 1px solid #eee;
 }
 
+/* Discussions Styles */
+.discussions-container {
+    margin-top: 1.5rem;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.discussions-container h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.discussion-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.discussion-item:last-child {
+    border-bottom: none;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.discussion-content {
+    flex: 1;
+}
+
+.discussion-content h4 {
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+.discussion-content p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.discussion-time {
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-bottom: 10px;
+}
+
+.discussion-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.like-btn, .comment-btn {
+    background: none;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-btn:hover, .comment-btn:hover {
+    color: var(--primary);
+}
+
 @media (max-width: 992px) {
     .main-content {
         grid-template-columns: 1fr;
