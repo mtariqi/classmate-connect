@@ -69,17 +69,59 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Post discussion functionality
+    // Post discussion functionality - FIXED
     const postButton = document.querySelector('.discussion-form button');
     const discussionTextarea = document.querySelector('.discussion-form textarea');
+    const discussionsContainer = document.createElement('div');
+    discussionsContainer.className = 'discussions-container';
+    discussionsContainer.innerHTML = '<h3>Recent Discussions</h3>';
+    
+    // Add discussions container after the discussion form
+    const discussionCard = document.querySelector('.card:has(.discussion-form)');
+    discussionCard.appendChild(discussionsContainer);
     
     postButton.addEventListener('click', function() {
         if (discussionTextarea.value.trim() !== '') {
-            alert('Discussion posted: ' + discussionTextarea.value);
+            // Create discussion element
+            const discussionElement = document.createElement('div');
+            discussionElement.className = 'discussion-item';
+            discussionElement.innerHTML = `
+                <div class="user-avatar">M</div>
+                <div class="discussion-content">
+                    <h4>mtariqi</h4>
+                    <p>${discussionTextarea.value}</p>
+                    <div class="discussion-time">Just now</div>
+                    <div class="discussion-actions">
+                        <button class="like-btn"><i class="far fa-thumbs-up"></i> Like</button>
+                        <button class="comment-btn"><i class="far fa-comment"></i> Comment</button>
+                    </div>
+                </div>
+            `;
+            
+            // Add to discussions container
+            discussionsContainer.appendChild(discussionElement);
+            
+            // Clear textarea
             discussionTextarea.value = '';
+            
+            // Show success message
+            alert('Discussion posted successfully!');
         } else {
             alert('Please write something before posting.');
         }
+    });
+    
+    // Make navigation items clickable (scroll to sections)
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     });
     
     // Classmate search functionality
